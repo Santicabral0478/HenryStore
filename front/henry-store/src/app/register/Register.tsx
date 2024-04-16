@@ -11,7 +11,7 @@ export const Register = () => {
 <div> 
      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "start", height: "105vh"}} className="">
         <div style={{  marginTop: "4rem"}}>
-          <Link href={`${process.env.API_URL}`}>
+          <Link href={`/`}>
             <button>
               <img style={{width: "15rem"}} src="https://andres-lopez-portafolio.vercel.app/img/henry.png" alt="" />
             </button>

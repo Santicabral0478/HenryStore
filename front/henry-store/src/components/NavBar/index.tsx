@@ -64,7 +64,7 @@ export const NavBar:React.FunctionComponent = ()=>{
                                         <button className="logout-button" onClick={handleLogout}>Logout</button>
                                     )}
                                     {!token && (
-                                        <Link href={`${process.env.API_URL}/login`} >
+                                        <Link href={`/login`} >
                                             <button className="login-button" >Login</button>
                                         </Link>
                                     )}

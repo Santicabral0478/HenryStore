@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React, { useState, ChangeEvent, FormEvent } from "react";
+import { backurl } from "@/app/BACK_URL";
 
 interface UserData {
   email: string;
@@ -28,7 +29,7 @@ export const RegisterForm: React.FC = () => {
   const submitHandler = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault();
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/register`, {
+      const response = await fetch(`${backurl.apiurl}/users/register`, {
         method: "POST",
         headers: {
           'ngrok-skip-browser-warning': 'true',
@@ -111,7 +112,7 @@ export const RegisterForm: React.FC = () => {
             </div>
             <div className="flex items-center justify-between mt-4">
               <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
-              <Link href={`${process.env.API_URL}/login`}>                
+              <Link href={`/login`}>                
                 <span className="text-xs text-gray-500 uppercase dark:text-gray-400 hover:underline">Login</span>
               </Link>
               <span className="w-1/5 border-b dark:border-gray-400 md:w-1/4"></span>

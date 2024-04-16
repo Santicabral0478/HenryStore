@@ -60,11 +60,11 @@ export const NoLogued: React.FunctionComponent= () => {
         <div className="nolog-container-items">
             <div className="nolog-img-text">
                 <img src="https://img.pikbest.com/element_our/20230707/bg/3ee7b9fe26118.png!sw800" alt="cart" />
-                <h2><b>No hay compras</b></h2>
-                <p>Identificate y comienza a comprar</p>
+                <h2><b>No purchases</b></h2>
+                <p>¡Log-in and start shopping!</p>
             </div>
             <div className="nolog-button">
-                <Link href={`${process.env.API_URL}/login`}>
+                <Link href={`/login`}>
                     <button>Login</button>
                 </Link>
             </div>

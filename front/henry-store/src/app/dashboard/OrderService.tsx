@@ -1,4 +1,5 @@
 import { IProduct } from "@/components/Card/types";
+import { backurl } from "../BACK_URL";
 
 type Order = {
     id: 1,
@@ -14,7 +15,7 @@ export const getOrders = async (token: string): Promise<Order[]> => {
   }
 
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/orders`, {
+    const response = await fetch(`${backurl.apiurl}/users/orders`, {
       headers: {
         'ngrok-skip-browser-warning': 'true',
         'Authorization': token,

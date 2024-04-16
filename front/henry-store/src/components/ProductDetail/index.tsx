@@ -2,6 +2,7 @@ import { IProduct } from "../Card/types";
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { useAuth } from '@/context/authContext';
 import "./style.css"
+import { backurl } from "@/app/BACK_URL";
 
 export const ProductDetail: React.FunctionComponent<IProduct> = ({ ...product }) => {  
     const imagesRep: { [key: string]: string } = {
@@ -40,7 +41,7 @@ export const ProductDetail: React.FunctionComponent<IProduct> = ({ ...product })
                 return;
             }
     
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/orders`, { 
+            const response = await fetch(`${backurl.apiurl}/orders`, { 
                 method: "POST",
                 headers: headers, // Usar los headers combinados
                 body: JSON.stringify({ products: [product.id] })
