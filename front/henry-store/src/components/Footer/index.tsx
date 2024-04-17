@@ -102,7 +102,7 @@ export const Footer:React.FunctionComponent = ()=>{
                 <h2 className="nav-title">Our Company</h2>
               </li>
               <li className="footer-nav-item">
-                <a href="#" className="footer-nav-link">About Apple</a>
+                <a href="#" className="footer-nav-link">About Henry Store</a>
               </li>
               <li className="footer-nav-item">
                 <a href="#" className="footer-nav-link">Careers</a>
@@ -121,11 +121,11 @@ export const Footer:React.FunctionComponent = ()=>{
               </li>
               <li className="footer-nav-item flex">
                 <div className="icon-box"></div>
-                <address className="content">One Apple Park Way, Cupertino, California, USA</address>
+                <address className="content">One HENRY-STORE, BSAS | ARG</address>
               </li>
               <li className="footer-nav-item flex">
                 <div className="icon-box"></div>
-                <a href="tel:1-800-MY-APPLE" className="footer-nav-link">1-800-MY-APPLE</a>
+                <a href="tel:1-800-MY-APPLE" className="footer-nav-link">1-800-MY-HENRY-STORE</a>
               </li>
               <li className="footer-nav-item flex">
                 <div className="icon-box"></div>
@@ -153,3 +153,5 @@ export const Footer:React.FunctionComponent = ()=>{
         </footer>
     )
 }
+
+export default Footer;

@@ -9,7 +9,7 @@ export const CategoriesList:React.FunctionComponent = ()=>{
             {
                 categories.map((category: ICategory)=>{
                     return(
-                        <button className="category-item">
+                        <button key={category.id} className="category-item">
                             {category.name}
                         </button>
                     )
@@ -18,3 +18,4 @@ export const CategoriesList:React.FunctionComponent = ()=>{
         </div>
     )
 }
+

@@ -1,10 +1,17 @@
-"use client";
+"use client"
+import type { Metadata } from "next";
 import { Footer } from "@/components/Footer";
 import { NavBar } from "@/components/NavBar";
 import styled from "styled-components";
+import Head from "next/head";
+
+export const metadata: Metadata = {
+    title: "Error: 404",
+    description: "Sorry, We couldn't find the page you are looking for : /",
+  };
 
 const StyledNotLogContainer = styled.section`
-     background: rgb(255,255,255);
+    background: rgb(255,255,255);
     background: radial-gradient(circle, rgb(216, 216, 216) 0%, rgba(0, 0, 0, 0) 100%); 
     width: 100vw;
     height: 90vh;
@@ -13,7 +20,7 @@ const StyledNotLogContainer = styled.section`
     justify-content: center;
 
     .nolog-container-items{
-        display: flex;
+        display: flex; 
         flex-direction: column;
     }
 
@@ -54,11 +61,16 @@ const StyledNotLogContainer = styled.section`
     }
 
 `;
+
 export default function PageNotFound(){
     return(
         <div className="">
-            <NavBar/>
+            <Head>
+                <title>Error: 404</title>
+                <meta name="description" content="Sorry, We couldn't find the page you are looking for 🙁" />
+            </Head>
             
+            <NavBar/>
             <StyledNotLogContainer className="">
                 <div className="nolog-container-items">
                     <div className="nolog-img-text">
@@ -68,8 +80,7 @@ export default function PageNotFound(){
                     </div>
                 </div>
             </StyledNotLogContainer>
-
             <Footer/>
         </div>
-    )
+    );
 }

@@ -3,8 +3,8 @@ import { Metadata } from 'next';
 import React, { useEffect, useState } from 'react';
 import { getOrders } from './OrderService'
 import { IOrder } from './types';
-import Order from '@/components/Order';
-import { NavBar } from '@/components/NavBar';
+import Order from '@/components/Order'; 
+import NavBar from '@/components/NavBar';
 import { Footer } from '@/components/Footer';
 import NoLogued from '@/components/NoLogued';
 import { useAuth } from '@/context/authContext';
@@ -26,24 +26,28 @@ export const Orders = () => {
   
   useEffect(() => {
     const fetchOrders = async () => {
-      if (token) { // Verificar que token no sea null
+      if (token) { 
         const data = await getOrders(token);
         setOrders(data);
       }
-      setIsLoading(false); // Indicar que la carga ha finalizado
+      setIsLoading(false);
     };
     fetchOrders();
   }, [token]);
 
-  console.log(orders);
-  console.log(token);
-  
-  // Renderizado condicional
+
   return (
     <div className="">
       <NavBar/>
       {!isLoading && !token && <NoLogued/>}
-      {isLoading ? <h1>Cargando...</h1> : (token && <Order orders={orders}/>)}
+      {isLoading ? 
+        <div className="flex h-[40rem] w-full items-center justify-center">
+          <div className="flex-col gap-4 w-full flex items-center justify-center">
+            <div className="w-28 h-28 border-8 text-blue-400 text-4xl animate-spin border-gray-300 flex items-center justify-center border-t-yellow-600 rounded-full">
+            </div>
+          </div>
+        </div>
+        : (token && <Order orders={orders}/>)}
       <Footer/>
     </div>
   );

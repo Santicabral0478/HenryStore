@@ -46,11 +46,8 @@
 }
 
 .hm-logo{
-  width: 13.5rem;
-  height: 2rem;
   display: flex;
   flex-direction: row;
-  gap: 2rem; 
 }
 
 .hm-logo button{

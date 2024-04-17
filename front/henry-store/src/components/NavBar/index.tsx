@@ -1,114 +1,157 @@
-"use client"
-import { NavBarMobile } from "../NavBarMobile/index";
-import React, { useState, useEffect } from "react";
-import { CategoriesList } from "./CategoriesList";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import "./style.css"
+import Image from "next/image";
+import { getOrders } from "@/app/dashboard/OrderService";
+import { IOrder } from "@/app/dashboard/types";
+import { NavBarMobile } from "../NavBarMobile";
+import { CategoriesList } from "./CategoriesList";
+import "./style.css";
 
-export const NavBar:React.FunctionComponent = ()=>{
-    const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+export const NavBar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [orders, setOrders] = useState<IOrder[]>([]); 
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [token, setToken] = useState<string | null>(null);
 
-    const toggleMenu = ():void => {
-        setIsMenuOpen(!isMenuOpen);
-    };
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
-    const [token, setToken] = useState<string | null>(null);
+  useEffect(() => {
+    const userToken = localStorage.getItem("userToken");
+    if (userToken) {
+      setToken(userToken);
+    }
+  }, []);
 
-    useEffect(() => {
-      const userToken = localStorage.getItem("userToken");
-      if (userToken) {
-        setToken(userToken);
+  useEffect(() => {
+    const fetchOrders = async () => {
+      if (token) { 
+        const data = await getOrders(token);
+        setOrders(data);
       }
-    }, []);
+      setIsLoading(false);
+    };
+    fetchOrders();
+  }, [token]);
 
-    const handleLogout = () => {
-      const logOut = window.confirm("Are you shure you want to log out?")
-      if(logOut){
-        localStorage.removeItem("userToken");
-        setToken(null);
-        window.location.reload();
-      } 
-    }; 
+  const handleLogout = () => {
+    const logOut = window.confirm("Are you sure you want to log out?")
+    if(logOut){
+      localStorage.removeItem("userToken");
+      setToken(null);
+      window.location.reload();
+    } 
+  }; 
 
-    return(
-        <div className="NavBar-gral-cont">
-            <div className="hm-header"> 
-                <div className="sup-gradient"></div>
-                <div className="container">
-                    <div className="header-menu">
-                        <div className="BurgMenuCart">
-                            <div className="hm-logo">
-                                <button className="hm-mobilebutton" onClick={toggleMenu} type="button"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png" alt="" /></button>
-                                <img className="logoHenryImg" src="https://henry-social-resources.s3-sa-east-1.amazonaws.com/henry-landing/assets/Henry/logo-white.png" alt="" />
-                            </div>
-                            <div className="hm-menu">
-                                <ul className="hm-ul">
-                                    <li><a className="offerLink" href="http://"><img className="offerStar" src="https://cdn-icons-png.flaticon.com/512/275/275812.png" alt=""/><b>Offers</b></a></li>
-                                    <li>
-                                        <Link href={`/`}>
-                                            <span>Home</span>
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href={`/about`}>
-                                            <span>About</span>
-                                        </Link>
-                                    </li>
-                                    <li><a href="http://">Contacto</a></li>
-                                </ul>
-                                <div className="icon-cart">
-                                    <Link href={`/dashboard`}>
-                                        <button>
-                                            <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="" />
-                                            <span>0</span>
-                                        </button>
-                                    </Link>
-                                    {token && (
-                                        <button className="logout-button" onClick={handleLogout}>Logout</button>
-                                    )}
-                                    {!token && (
-                                        <Link href={`/login`} >
-                                            <button className="login-button" >Login</button>
-                                        </Link>
-                                    )}
-                                </div>
-                            </div>
-                        </div>
-                        <div className="searchCategory">
-                            <div className="searchBox">              
-                                <input className="searchInput" type="text" name="" placeholder="Search something"/>
-                                <button className="searchButton">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
-                                    <g clip-path="url(#clip0_2_17)">
-                                        <g filter="url(#filter0_d_2_17)">
-                                            <path d="M23.7953 23.9182L19.0585 19.1814M19.0585 19.1814C19.8188 18.4211 20.4219 17.5185 20.8333 16.5251C21.2448 15.5318 21.4566 14.4671 21.4566 13.3919C21.4566 12.3167 21.2448 11.252 20.8333 10.2587C20.4219 9.2653 19.8188 8.36271 19.0585 7.60242C18.2982 6.84214 17.3956 6.23905 16.4022 5.82759C15.4089 5.41612 14.3442 5.20435 13.269 5.20435C12.1938 5.20435 11.1291 5.41612 10.1358 5.82759C9.1424 6.23905 8.23981 6.84214 7.47953 7.60242C5.94407 9.13789 5.08145 11.2204 5.08145 13.3919C5.08145 15.5634 5.94407 17.6459 7.47953 19.1814C9.01499 20.7168 11.0975 21.5794 13.269 21.5794C15.4405 21.5794 17.523 20.7168 19.0585 19.1814Z" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" shape-rendering="crispEdges"></path>
-                                        </g>
-                                    </g>
-                                    <defs>
-                                        <filter id="filter0_d_2_17" x="-0.418549" y="3.70435" width="29.7139" height="29.7139" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                            <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
-                                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
-                                            <feOffset dy="4"></feOffset>
-                                            <feGaussianBlur stdDeviation="2"></feGaussianBlur>
-                                            <feComposite in2="hardAlpha" operator="out"></feComposite>
-                                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></feColorMatrix>
-                                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2_17"></feBlend>
-                                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2_17" result="shape"></feBlend>
-                                        </filter>
-                                        <clipPath id="clip0_2_17">
-                                            <rect width="28.0702" height="28.0702" fill="white" transform="translate(0.403503 0.526367)"></rect>
-                                        </clipPath>
-                                    </defs>
-                                </svg>
-                                </button>
-                            </div>
-                            <CategoriesList/>
-                        </div>
-                    </div>
+  const getTotalProducts = (orders: IOrder[]) => {
+    return orders.reduce((total, order) => {
+      return total + order.products.length
+    }, 0);
+  };
+
+  const totalProducts = getTotalProducts(orders);
+
+  return(
+    <div className="NavBar-gral-cont">
+      <div className="hm-header"> 
+        <div className="sup-gradient"></div>
+        <div className="container">
+          <div className="header-menu">
+            <div className="BurgMenuCart">
+              <div className="hm-logo">
+                <button className="hm-mobilebutton" onClick={toggleMenu} type="button">
+                  <Image 
+                    src="/bars.png" 
+                    width={20} 
+                    height={3} 
+                    alt="Menu"
+                    style={{filter: "invert(100%)", marginInline: "auto", width: "2rem"}}
+                  />
+                </button>
+                <Image 
+                  src="/henry-logo.png" 
+                  width={120} 
+                  height={120} 
+                  alt="Henry Logo"
+                  style={{height: "3.5rem", width: "9.5rem" }}
+                />
+              </div>
+              <div className="hm-menu">
+                <ul className="hm-ul">
+                  <li>
+                    <a className="offerLink" href="#">
+                      <Image 
+                        className="offerStar" 
+                        src="/star.png" 
+                        width={20} 
+                        height={20} 
+                        alt="Offers"
+                        style={{marginInline: "auto", width: "1.1rem", height: "1rem"}}
+                      />
+                      <b>Offers</b>
+                    </a>
+                  </li>
+                  <li>
+                    <Link href={`/`}>
+                      <span>Home</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href={`/about`}>
+                      <span>About</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href={`/products`}>
+                      <span>Products</span>
+                    </Link>
+                  </li>
+                </ul>
+                <div className="icon-cart">
+                  <Link href={`/dashboard`}>
+                    <button>
+                      <Image 
+                        src="/cart.png" 
+                        width={27} 
+                        height={13} 
+                        alt="Shopping Cart"
+                        style={{filter: "invert(100%)", marginInline: "auto", width: "2rem", height: "2rem"}} 
+                      />
+                      <span><b>{totalProducts}</b></span>
+                    </button>
+                  </Link>
+                  {token ? (
+                    <button className="logout-button" onClick={handleLogout}>Logout</button>
+                  ) : (
+                    <Link href={`/login`} >
+                      <button className="login-button" >Login</button>
+                    </Link>
+                  )}
                 </div>
+              </div>
             </div>
-            {isMenuOpen && <NavBarMobile onCloseMenu={toggleMenu} />}
+            <div className="searchCategory">
+              <div className="searchBox">              
+                <input className="searchInput" type="text" name="" placeholder="Search something"/>
+                <button className="searchButton">
+                  <Image 
+                    src="/lupa.png" 
+                    width={20} 
+                    height={20} 
+                    alt="Search"
+                    style={{filter: "invert(100%)", marginInline: "auto", width: "1rem"}}
+                  />
+                </button>
+              </div>
+              <CategoriesList/>
+            </div>
+          </div>
         </div>
-    )
-} 
+      </div>
+      {isMenuOpen && <NavBarMobile onCloseMenu={toggleMenu} />}
+    </div>
+  )
+};
 
+export default NavBar;

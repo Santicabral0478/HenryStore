@@ -22,8 +22,6 @@ export const ProductDetail: React.FunctionComponent<IProduct> = ({ ...product })
     
     const brokenImageSrc = imagesRep[product.name];
     
-    // Buy Info____________------------------------------------------------------------------------------------------
-
     const auth = useAuth();
     const token = auth ? auth.token : null;
 
@@ -32,8 +30,8 @@ export const ProductDetail: React.FunctionComponent<IProduct> = ({ ...product })
         try {
             const headers: HeadersInit = {
                 "Content-Type": "application/json",
-                ...(token && { "Authorization": token }), // Agregar la autorización solo si hay un token
-                "ngrok-skip-browser-warning": "true", // Agregar el encabezado ngrok-skip-browser-warning
+                ...(token && { "Authorization": token }),
+                "ngrok-skip-browser-warning": "true",
             };
     
             if (!token) {
@@ -43,17 +41,16 @@ export const ProductDetail: React.FunctionComponent<IProduct> = ({ ...product })
     
             const response = await fetch(`${backurl.apiurl}/orders`, { 
                 method: "POST",
-                headers: headers, // Usar los headers combinados
+                headers: headers, 
                 body: JSON.stringify({ products: [product.id] })
             });
-    
             alert("Added product");
-    
+            window.location.href = '/dashboard';
+            
             if (!response.ok) {
                 throw new Error("Failed to add to cart");
             }
     
-            // Manejar la respuesta según sea necesario
         } catch (error) {
             console.error("Error:", error);
         }

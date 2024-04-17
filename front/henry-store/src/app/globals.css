@@ -55,3 +55,22 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+/* Estilo para la barra de desplazamiento */
+::-webkit-scrollbar {
+    width: 9px; /* Ancho de la barra */
+    background-color: #e8e8e8; /* Color de fondo */
+    border-radius: 13px; /* Radio del borde */
+  }
+  
+  /* Estilo para el thumb del scrollbar */
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(0, 174, 255); /* Color del thumb */
+    border-radius: 13px; /* Radio del borde */
+  }
+  
+  /* Estilo para el track del scrollbar */
+  ::-webkit-scrollbar-track {
+    background-color: #e8e8e8; /* Color del track */
+  }
+  

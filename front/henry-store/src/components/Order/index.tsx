@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { IOrder } from "@/app/dashboard/types";
-import { Metadata } from "next";
 import styled from "styled-components";
 
 const StyledPrincipalCont = styled.div`
@@ -30,9 +29,8 @@ const StyledPrincipalContCards = styled.div`
 
     .total-cart-items{
         border-radius: 21px;
-        background-color: #e0e0e0;
-        border: 1px solid #858585;
-        box-shadow: 0px 0px 39px -14px rgba(0, 0, 0, 0.513);
+        background-color: rgb(243 244 246);
+        border: 1px solid #afafaf;
         padding: 1rem;
     }
 
@@ -44,9 +42,8 @@ const StyledPrincipalContCards = styled.div`
         display: flex;
         flex-direction: column-reverse;
         border-radius: 21px;
-        background-color: #e0e0e0;
-        border: 1px solid #858585;
-        box-shadow: 0px 0px 39px -14px rgba(0, 0, 0, 0.479);
+        background-color: rgb(243 244 246);
+        border: 1px solid #afafaf;
         padding: 1rem;
     }
 `;
@@ -91,9 +88,8 @@ const StyledPayContent = styled.div`
     flex-direction: column;
     gap: 1rem;
     border-radius: 21px;
-    background-color: #e0e0e0;
-    border: 1px solid #858585;
-    box-shadow: 0px 0px 39px -14px rgba(0, 0, 0, 0.335);
+    background-color: rgb(243 244 246);
+    border: 1px solid #afafaf;
     padding:  1rem 2rem;
 
     @media screen and (max-width: 900px) {
@@ -182,6 +178,8 @@ export const Order: React.FunctionComponent<OrderProps> = ({ orders }) => {
             return total + order.products.length
         }, 0);
     };
+
+    
     
     const totalPrice = getTotalPrice(orders);
     const totalProducts = getTotalProducts(orders);

@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { fetchData } from '../ProductCards/ProductCardsServer';
 import { Card } from '../Card';
@@ -26,5 +27,4 @@ export const ProductCards = () => {
   );
 };
 
-
- 
+export default ProductCards;
