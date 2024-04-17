@@ -9,7 +9,7 @@ export const fetchData = async (): Promise<IProduct[]> => {
         }
       });
 
-      console.log(`CONSOLE.LOG DE LA URL:...    ${backurl.apiurl}/products`);
+      console.log(`MY BACK-END URL: ${backurl.apiurl}`);
       
       const data = await response.json();
       return data;

@@ -4,12 +4,8 @@ import { IProduct } from "@/components/Card/types";
 import { ProductDetail } from '@/components/ProductDetail';
 import { NavBar } from '@/components/NavBar';
 import { Footer } from '@/components/Footer';
-import { headers } from 'next/headers';
 import { backurl } from '@/app/BACK_URL';
-
-type Params = {
-    id: string;
-};
+import { Params } from './types';
 
 const getProduct = async (id: string) => {
     try {
@@ -50,8 +46,6 @@ export const IdProducts = ({ params }: { params: Params }) => {
     }, [product]);
 
     if (redirect === true) {
-        // Redirigir a la página de error si el producto es undefined
-        // Cambia la ruta '/404' a tu ruta de error real
         window.location.href = '/404';
         return null;
     } 
@@ -65,6 +59,7 @@ export const IdProducts = ({ params }: { params: Params }) => {
                     <Footer/>
                 </div>
             ) : (
+                // ::::::::::::__----SKELETON----__:::::::::::::::
                 <div className="flex flex-col bg-neutral-300 w-56 h-64 animate-pulse rounded-xl p-4 gap-4">
                     <div className="bg-neutral-400/50 w-full h-32 animate-pulse rounded-md"></div>
                     <div className="flex flex-col gap-2">

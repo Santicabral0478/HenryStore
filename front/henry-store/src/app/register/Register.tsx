@@ -8,8 +8,8 @@ import React from 'react';
 export const Register = () => {
   
   return (
-<div> 
-     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "start", height: "105vh"}} className="">
+    <div> 
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "start", height: "150vh"}} className="">
         <div style={{  marginTop: "4rem"}}>
           <Link href={`/`}>
             <button>
@@ -18,8 +18,8 @@ export const Register = () => {
           </Link>
         </div>
         <RegisterForm/>
-     </div>
-        <Footer/>
+      </div>
+      <Footer/>
     </div>
   );
 };

@@ -1,3 +1,3 @@
 export const backurl = {
-    apiurl: "https://known-terminally-hog.ngrok-free.app"
-}
+    apiurl: "http://localhost:3001"
+};

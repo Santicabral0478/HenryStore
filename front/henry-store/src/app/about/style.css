@@ -1,0 +1,120 @@
+    .left-container{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+
+    .right-container{
+        display: flex;
+        flex-direction: row-reverse;
+        width: 100%;
+    }
+
+    .text-container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+        padding: 3rem;
+    }
+
+    .p-h2-button-container{
+        z-index: -1;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 90%;
+        padding: 3rem;
+        border-radius: 21px;
+        background: linear-gradient(315deg, #f4e6d7, #dfdccd);
+        box-shadow:  -45px -45px 87px #c3c3c3cb,
+             45px 45px 87px #ffffffc7;
+    }
+
+    .p-h2-button-container h1{
+        font-size: 2rem;
+        color: #000;
+    }
+
+    .p-h2-button-container p{
+        font-size: 15px;
+    }
+
+    .button1{
+        background: linear-gradient(225deg, rgba(228,116,139,1) 0%, rgba(255,182,35,1) 100%);
+        padding: 12px;
+        border: 1px solid #f66582;
+        border-radius: 31px;
+        width: 7rem;
+    }
+
+    .button2{
+        background: linear-gradient(225deg, rgb(116, 189, 228) 0%, rgb(35, 255, 222) 100%);
+        padding: 12px;
+        border: 1px solid #87f8e9;
+        border-radius: 31px;
+        width: 7rem;
+    }
+
+    .button3{
+        background: linear-gradient(225deg, rgb(232, 214, 56) 0%, rgba(255,182,35,1) 100%);
+        padding: 12px;
+        border: 1px solid #f7f983;
+        border-radius: 31px;
+        width: 7rem;
+    }
+
+    /* image styles */
+
+    .img-container{
+        display: flex;
+        align-items: center;
+        width: 50%;
+        justify-content: center;
+        padding: 1rem;
+        border-radius: 15px;
+        
+    }
+
+    .img-cont img{
+        width: 100%;
+        border-radius: 15px;
+        border: 1px solid #a8a8a8;
+    }
+
+    @media screen and (max-width: 860px){
+        .left-container{
+            flex-direction: column;
+            width: 100%;
+        }
+    
+        .right-container{
+            flex-direction: column;
+            width: 100%;
+        }
+    
+        .text-container{
+            width: 100%;
+            padding: 1rem;
+        }
+
+        .img-container{
+            width: 100%;
+            justify-content: center;
+            padding: 1rem;
+            border-radius: 15px;
+        }
+
+        .p-h2-button-container{
+            z-index: -1;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+            padding: 3rem;
+            border-radius: 21px;
+            background: linear-gradient(315deg, #f4e6d7, #dfdccd);
+            border: 1px solid #a8a8a8;
+            box-shadow: none;
+        }
+    }

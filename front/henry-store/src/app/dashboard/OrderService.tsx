@@ -1,14 +1,7 @@
-import { IProduct } from "@/components/Card/types";
 import { backurl } from "../BACK_URL";
+import { IOrder } from "./types";
 
-type Order = {
-    id: 1,
-    status: string,
-    date: Date,
-    products: IProduct[]
-}
-
-export const getOrders = async (token: string): Promise<Order[]> => {
+export const getOrders = async (token: string): Promise<IOrder[]> => {
 
   if (!token) {
     throw new Error('API URL or authorization token is not defined');
@@ -22,7 +15,7 @@ export const getOrders = async (token: string): Promise<Order[]> => {
       },  
     });
     
-    const data = await response.json();
+    const data = await response.json(); 
     return data;
   }  
   

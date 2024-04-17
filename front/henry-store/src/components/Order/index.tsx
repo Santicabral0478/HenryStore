@@ -4,8 +4,6 @@ import { IOrder } from "@/app/dashboard/types";
 import { Metadata } from "next";
 import styled from "styled-components";
 
-//ugdkfjgbskdjfvbdfkjgbvjdvhgdkjfgbvjkdfgbvkjh
-
 const StyledPrincipalCont = styled.div`
     padding: 1rem;
     display: flex;
@@ -164,9 +162,6 @@ const StyledPayContent = styled.div`
         font-size: 23px;
     }
 `;
-
-//ugdkfjgbskdjfvbdfkjgbvjdvhgdkjfgbvjkdfgbvkjh
-
 
 interface OrderProps{
     orders: IOrder[]

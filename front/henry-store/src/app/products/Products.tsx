@@ -5,7 +5,7 @@ import { ProductCards } from "@/components/ProductCards";
 
 export const Products = ()=>{
     return(
-        <div className="">
+        <div>
             <NavBar/>
             <ProductCards/>
             <Footer/>

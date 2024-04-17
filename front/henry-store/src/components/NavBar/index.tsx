@@ -3,7 +3,6 @@ import { NavBarMobile } from "../NavBarMobile/index";
 import React, { useState, useEffect } from "react";
 import { CategoriesList } from "./CategoriesList";
 import Link from "next/link";
-import styled from "styled-components";
 import "./style.css"
 
 export const NavBar:React.FunctionComponent = ()=>{
@@ -46,11 +45,15 @@ export const NavBar:React.FunctionComponent = ()=>{
                                 <ul className="hm-ul">
                                     <li><a className="offerLink" href="http://"><img className="offerStar" src="https://cdn-icons-png.flaticon.com/512/275/275812.png" alt=""/><b>Offers</b></a></li>
                                     <li>
-                                        <Link href={`${process.env.API_URL}`}>
+                                        <Link href={`/`}>
                                             <span>Home</span>
                                         </Link>
                                     </li>
-                                    <li><a href="http://">Nosotros</a></li>
+                                    <li>
+                                        <Link href={`/about`}>
+                                            <span>About</span>
+                                        </Link>
+                                    </li>
                                     <li><a href="http://">Contacto</a></li>
                                 </ul>
                                 <div className="icon-cart">

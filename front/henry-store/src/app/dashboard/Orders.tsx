@@ -4,10 +4,10 @@ import React, { useEffect, useState } from 'react';
 import { getOrders } from './OrderService'
 import { IOrder } from './types';
 import Order from '@/components/Order';
-import { useAuth } from '@/context/authContext';
 import { NavBar } from '@/components/NavBar';
 import { Footer } from '@/components/Footer';
 import NoLogued from '@/components/NoLogued';
+import { useAuth } from '@/context/authContext';
 
 export const metadata: Metadata = {
   title: "Shopping Cart",
@@ -19,9 +19,9 @@ export const metadata: Metadata = {
 };
 
 export const Orders = () => {
-  const auth = useAuth(); // Obtener el contexto de autenticación
-  const token = auth ? auth.token : null; // Manejar el caso donde auth puede ser null
-  const [orders, setOrders] = useState<IOrder[]>([]); // Inicializa products con un array vacío de tipo IProduct
+  const auth = useAuth(); 
+  const token = auth ? auth.token : null; 
+  const [orders, setOrders] = useState<IOrder[]>([]); 
   const [isLoading, setIsLoading] = useState<boolean>(true);
   
   useEffect(() => {

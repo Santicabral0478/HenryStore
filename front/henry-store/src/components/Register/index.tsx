@@ -1,14 +1,7 @@
 import Link from "next/link";
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { backurl } from "@/app/BACK_URL";
-
-interface UserData {
-  email: string;
-  password: string;
-  name: string;
-  address: string;
-  phone: string;
-}
+import { UserData } from "./types";
 
 export const RegisterForm: React.FC = () => {
   const [userData, setUserData] = useState<UserData>({
@@ -43,6 +36,12 @@ export const RegisterForm: React.FC = () => {
     } catch (error) {
       console.error("Error:", error);
       setError("Failed to register. Please try again later.");
+    }
+    const redirectUrl = localStorage.getItem('redirectUrl');
+    if (redirectUrl) {
+      window.location.href = redirectUrl;
+    } else {
+      window.location.href = '/login';
     }
   };
 

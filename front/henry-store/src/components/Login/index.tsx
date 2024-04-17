@@ -1,32 +1,18 @@
 import Link from "next/link";
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { backurl } from "@/app/BACK_URL";
-
-interface UserData {
-  email: string;
-  password: string;
-}
-
-interface AuthFormProps {
-  token: string | null;
-  setToken: React.Dispatch<React.SetStateAction<string | null>>;
-}
+import { IUserData, AuthFormProps } from "./types";
 
 export const AuthForm: React.FC<AuthFormProps> = ({ token, setToken }) => {
-  const [userData, setUserData] = useState<UserData>({
+  const [userData, setUserData] = useState<IUserData>({
     email: "",
-    password: "",
+    password: "", 
   });
 
   const inputHandler = (event: ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = event.target;
     setUserData({ ...userData, [name]: value });
   };
-
-  // const redirectToLogin = () => {
-  //   localStorage.setItem('redirectUrl', window.location.pathname);
-  //   window.location.href = '/login';
-  // };
 
   const submitHandler = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault();

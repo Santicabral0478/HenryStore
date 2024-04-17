@@ -17,7 +17,7 @@ export const Login = () => {
 
   return (
     <div> 
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "start", height: "90vh"}} className="">
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "start", height: "100vh"}} className="">
          <div style={{  marginTop: "4rem"}}>
            <Link href={`/`}>
              <button>
