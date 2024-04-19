@@ -14,6 +14,6 @@ export default function Home() {
         <LazyProductCards/>
       </Suspense>
       <Footer/>
-    </div>
+    </div> 
   );
 } 

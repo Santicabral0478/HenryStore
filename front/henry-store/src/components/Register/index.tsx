@@ -3,7 +3,7 @@ import React, { useState, ChangeEvent, FormEvent } from "react";
 import { backurl } from "@/app/BACK_URL";
 import { UserData } from "./types";
 
-export const RegisterForm: React.FC = () => {
+export const RegisterForm = () => {
   const [userData, setUserData] = useState<UserData>({
     email: "",
     password: "",
@@ -12,15 +12,53 @@ export const RegisterForm: React.FC = () => {
     phone: ""
   });
 
-  const [error, setError] = useState<string>("");
+  const [errors, setErrors] = useState<{ email?: string; password?: string; name?: string; address?: string; phone?: string}>({});
 
   const inputHandler = (event: ChangeEvent<HTMLInputElement>): void => {
-    const { name, value } = event.target;
-    setUserData({ ...userData, [name]: value });
+    const name = event.target.name;
+    const value = event.target.value;
+
+    const updateUserData = {
+      ...userData,
+      [name]: value
+    };
+
+    setUserData(updateUserData);
+  };
+
+  const validateInput = (inputName: string, inputValue: string): boolean => {
+    switch (inputName) {
+      case "email": return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inputValue);
+      case "password": return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/.test(inputValue);
+      case "name": return /^[A-Za-záéíóúÁÉÍÓÚüÜñÑ]+(?:['\s][A-Za-záéíóúÁÉÍÓÚüÜñÑ]+)*\s[A-Za-záéíóúÁÉÍÓÚüÜñÑ]+(?:['\s][A-Za-záéíóúÁÉÍÓÚüÜñÑ]+)*$/.test(inputValue);
+      case "address": return /^[A-Za-z0-9\s,'-]*$/.test(inputValue);
+      case "phone": return /^\d+$/.test(inputValue);
+      default: return false;
+    }
   };
 
   const submitHandler = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault();
+
+    const newErrors: { email?: string; password?: string; name?: string; address?: string; phone?: string} = {};
+
+  if(userData.email == ""   ) newErrors.email = "📧 Email is required" 
+    else if ((validateInput ("email", userData.email)) == false) newErrors.email = "📧 Invalid email format";
+  if(userData.password == "") newErrors.password = "🔑 Password is required" 
+    else if((validateInput  ("password" ,userData.password)) == false) newErrors.password = "🔑 Password must include at least one number, one lowercase, one uppercase letter, and be at least 8 characters long";
+  if(userData.name == ""    ) newErrors.name = "👤 Name is required" 
+    else if((validateInput  ("name" ,userData.name)) == false) newErrors.name = "👤 Invalid name";
+  if(userData.address == "" ) newErrors.address = "🏠 Adress is required" 
+    // else if((validateInput  ("adress" ,userData.address)) == false) newErrors.address = "🏠 Invalid adress";
+  if(userData.phone == ""   ) newErrors.phone = "📞 Phone is required" 
+    else if((validateInput  ("phone" ,userData.phone)) == false) newErrors.phone = "📞 Invalid phone";
+    
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length > 0) {
+      return;
+    }
+
     try {
       const response = await fetch(`${backurl.apiurl}/users/register`, {
         method: "POST",
@@ -30,18 +68,19 @@ export const RegisterForm: React.FC = () => {
         },
         body: JSON.stringify(userData),
       });
+
       if (!response.ok) {
         throw new Error("Failed to register");
       }
     } catch (error) {
       console.error("Error:", error);
-      setError("Failed to register. Please try again later.");
     }
+
     const redirectUrl = localStorage.getItem('redirectUrl');
     if (redirectUrl) {
       window.location.href = redirectUrl;
     } else {
-      window.location.href = '/login';
+      window.location.href = `/login`;
     }
   };
 
@@ -60,6 +99,8 @@ export const RegisterForm: React.FC = () => {
                 onChange={inputHandler}
                 placeholder="Email"
               />
+              {errors.email && <p className="text-red-500 text-xs">{errors.email}</p>}
+
               <label className="font-semibold text-sm text-gray-600 pb-1 block">Password</label>
               <input
                 className="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
@@ -69,7 +110,9 @@ export const RegisterForm: React.FC = () => {
                 onChange={inputHandler}
                 placeholder="Password"
               />
-              <label className="font-semibold text-sm text-gray-600 pb-1 block">Password</label>
+              {errors.password && <p className="text-red-500 text-xs">{errors.password}</p>}
+
+              <label className="font-semibold text-sm text-gray-600 pb-1 block">Name</label>
               <input
                 className="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
                 value={userData.name}
@@ -78,7 +121,9 @@ export const RegisterForm: React.FC = () => {
                 onChange={inputHandler}
                 placeholder="Name"
               />
-              <label className="font-semibold text-sm text-gray-600 pb-1 block">Password</label>
+              {errors.name && <p className="text-red-500 text-xs">{errors.name}</p>}
+
+              <label className="font-semibold text-sm text-gray-600 pb-1 block">Address</label>
               <input
                 className="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
                 value={userData.address}
@@ -87,7 +132,8 @@ export const RegisterForm: React.FC = () => {
                 onChange={inputHandler}
                 placeholder="Address"
               />
-              <label className="font-semibold text-sm text-gray-600 pb-1 block">Password</label>
+              {errors.address && <p className="text-red-500 text-xs">{errors.address}</p>}
+              <label className="font-semibold text-sm text-gray-600 pb-1 block">Phone</label>
               <input
                 className="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
                 value={userData.phone}
@@ -96,13 +142,12 @@ export const RegisterForm: React.FC = () => {
                 onChange={inputHandler}
                 placeholder="Phone"
               />
+              {errors.phone && <p className="text-red-500 text-xs">{errors.phone}</p>}
             </div>
             <div className="text-right mb-4">
               <a className="text-xs font-display font-semibold text-gray-500 hover:text-gray-600 cursor-pointer" href="#">
                 Forgot Password?
               </a>
-            </div>
-            <div className="flex justify-center w-full items-center">
             </div>
             <div className="mt-5">
               <button className="py-2 px-4 bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg" type="submit">
@@ -121,6 +166,6 @@ export const RegisterForm: React.FC = () => {
       </div>
     </div>
   );
-};
+}
 
 export default RegisterForm;

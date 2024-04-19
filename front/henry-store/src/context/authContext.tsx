@@ -9,6 +9,10 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
+
+
+
+
 // Creamos el proveedor de autenticación que envolverá nuestra aplicación
 export function AuthProvider({ children }: { children: ReactNode }) {
     const [token, setToken] = useState<string | null>(null);

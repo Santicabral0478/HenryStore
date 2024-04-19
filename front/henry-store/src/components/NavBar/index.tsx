@@ -35,7 +35,7 @@ export const NavBar = () => {
     fetchOrders();
   }, [token]);
 
-  const handleLogout = () => {
+  const handleLogout = ():void => {
     const logOut = window.confirm("Are you sure you want to log out?")
     if(logOut){
       localStorage.removeItem("userToken");
@@ -44,7 +44,7 @@ export const NavBar = () => {
     } 
   }; 
 
-  const getTotalProducts = (orders: IOrder[]) => {
+  const getTotalProducts = (orders: IOrder[]):number => {
     return orders.reduce((total, order) => {
       return total + order.products.length
     }, 0);

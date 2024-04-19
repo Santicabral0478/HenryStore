@@ -13,7 +13,6 @@ export const metadata: Metadata = {
 const StyledNotLogContainer = styled.section`
     background: rgb(255,255,255);
     background: radial-gradient(circle, rgb(216, 216, 216) 0%, rgba(0, 0, 0, 0) 100%); 
-    width: 100vw;
     height: 90vh;
     display: flex;
     align-items: center;

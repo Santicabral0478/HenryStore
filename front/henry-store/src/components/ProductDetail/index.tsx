@@ -66,7 +66,7 @@ export const ProductDetail: React.FunctionComponent<IProduct> = ({ ...product })
                     </div>
             <div className="flex flex-col md:flex-row -mx-4">
                 <div className="md:flex-1 px-4">
-                    <div className="h-[460px] border-gray-400 rounded-3xl bg-gray-300 dark:bg-gray-700 mb-4">
+                    <div className="h-[460px] border-gray-400 rounded-3xl bg-white mb-4">
                         {isImageBroken(product.image) ? (
                           <img className="w-full h-full object-cover border-opacity-70 border-gray-400 rounded-3xl" src={brokenImageSrc} alt={product.name} />
                         ) : (
@@ -91,9 +91,9 @@ export const ProductDetail: React.FunctionComponent<IProduct> = ({ ...product })
                         </div>
                     </div>
                     <div className="mb-4">
-                        <span className="font-bold text-gray-700 dark:text-gray-300">Select Color:</span>
+                        <span className="font-bold text-gray-700">Select Color:</span>
                         <div className="flex items-center mt-2">
-                            <button className="w-6 h-6 rounded-full bg-gray-800 dark:bg-gray-200 mr-2"></button>
+                            <button className="w-6 h-6 rounded-full bg-gray-800"></button>
                             <button className="w-6 h-6 rounded-full bg-red-500 dark:bg-red-700 mr-2"></button>
                             <button className="w-6 h-6 rounded-full bg-blue-500 dark:bg-blue-700 mr-2"></button>
                             <button className="w-6 h-6 rounded-full bg-yellow-500 dark:bg-yellow-700 mr-2"></button>
@@ -101,8 +101,8 @@ export const ProductDetail: React.FunctionComponent<IProduct> = ({ ...product })
                     </div>
 
                     <div>
-                        <span className="font-bold text-gray-700 dark:text-gray-300">Product Description:</span>
-                        <p className="text-gray-600 dark:text-gray-300 text-sm mt-2">
+                        <span className="font-bold text-gray-700">Product Description:</span>
+                        <p className="text-gray-600 text-sm mt-2">
                             {product.description}
                         </p>
                     </div>

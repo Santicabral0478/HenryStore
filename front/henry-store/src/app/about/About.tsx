@@ -3,9 +3,12 @@ import { Footer } from "@/components/Footer";
 import NavBar from "@/components/NavBar";
 
 import "./style.css"
+import { useState } from "react";
 
 
 export const About = ()=>{
+
+
     return(
         <div className="">
             <NavBar/>

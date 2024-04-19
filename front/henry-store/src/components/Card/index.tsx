@@ -13,7 +13,7 @@ export const Card: React.FunctionComponent<IProduct> = ({ ...product }) => {
       "HomePod mini": "https://acdn.mitiendanube.com/stores/002/092/809/products/homepoddd-071-98044bdea46ba3b7c916626491351449-240-0.jpg",
     };
   
-    const isImageBroken = (url: string) => {
+    const isImageBroken = (url: string):boolean => {
       const img = new Image();
       img.src = url;
       return !img.complete || img.naturalWidth === 0;
