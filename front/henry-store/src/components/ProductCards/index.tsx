@@ -16,8 +16,6 @@ export const ProductCards = () => {
     fetchProducts();
   }, []);
 
-  console.log(products);
-
   return (
     <div className="product-cards">
       {products.map((product: IProduct) => (  

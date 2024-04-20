@@ -3,25 +3,27 @@ import Link from "next/link";
 import { backurl } from "@/app/BACK_URL";
 import { IUserData, AuthFormProps } from "./types";
 
-export const AuthForm: React.FC<AuthFormProps> = ({ token, setToken }) => {
+export const AuthForm: React.FC<AuthFormProps>  = ({ token, setToken }) => {
+
   const [userData, setUserData] = useState<IUserData>({
     email: "",
     password: "",
   });
-  const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
 
-  const inputHandler = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const inputHandler = (event: React.ChangeEvent<HTMLInputElement>): void =>{
     const name = event.target.name;
     const value = event.target.value;
 
-    const updatedUserData = {
-      ...userData,
-      [name]: value
-    };
+    const updateUserData= {
+      ...userData, [name]: value
+    }
+    
+    setUserData(updateUserData);
+  }
   
-    setUserData(updatedUserData);
-  };
+  // validacion de datos
 
+  const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
 
   const validateInput = (inputName: string ,inputValue: string) =>{
     switch (inputName) {
@@ -33,17 +35,16 @@ export const AuthForm: React.FC<AuthFormProps> = ({ token, setToken }) => {
   const submitHandler = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault();
 
-
     const newErrors: { email?: string; password?: string } = {};
-
-    if(userData.email == "") newErrors.email = "📧 Email is required" 
-      else if ((validateInput("email", userData.email) == false)) newErrors.email = "📧 Invalid email format";
-    if(userData.password == "") newErrors.password = "🔑 Password is required" 
-      else if((validateInput("password" ,userData.password)) == false) newErrors.password = "🔑 Invalid password";
+    
+    if(userData.email == ""     ) newErrors.email = "📧 Email is required" 
+      else if ((validateInput   ("email", userData.email) == false)) newErrors.email = "📧 Invalid email format";
+    if(userData.password == ""  ) newErrors.password = "🔑 Password is required" 
+      else if((validateInput    ("password" ,userData.password)) == false) newErrors.password = "🔑 Invalid password"; 
       
     setErrors(newErrors);
 
-    if (Object.keys(newErrors).length > 0){
+    if (Object.keys(errors).length > 0){
       return;
     }  
 
@@ -65,12 +66,8 @@ export const AuthForm: React.FC<AuthFormProps> = ({ token, setToken }) => {
       setToken(json.token);
       localStorage.setItem("userToken", json.token);
 
-      const redirectUrl = localStorage.getItem('redirectUrl');
-      if (redirectUrl) {
-        window.location.href = redirectUrl;
-      } else {
-        window.location.href = '/';
-      }
+      window.location.href = '/';
+
     } catch (error) {
       console.error("Error:", error);
     }
@@ -92,6 +89,7 @@ export const AuthForm: React.FC<AuthFormProps> = ({ token, setToken }) => {
                 placeholder="Email"
               />
               {errors.email && <p className="text-red-500 text-xs">{errors.email}</p>}
+
             </div>
             <div>
               <label className="font-semibold text-sm text-gray-600 pb-1 block">Password</label>
@@ -104,6 +102,7 @@ export const AuthForm: React.FC<AuthFormProps> = ({ token, setToken }) => {
                 placeholder="Password"
               />
               {errors.password && <p className="text-red-500 text-xs">{errors.password}</p>}
+
             </div>
             <button className="py-2 px-4 bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg" type="submit">
               Log in

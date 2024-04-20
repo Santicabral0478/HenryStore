@@ -3,7 +3,7 @@ import { IOrder } from "./types";
 
 export const getOrders = async (token: string): Promise<IOrder[]> => {
 
-  if (!token) {
+  if (token == null || undefined) {
     throw new Error('API URL or authorization token is not defined');
   }
 
@@ -17,9 +17,8 @@ export const getOrders = async (token: string): Promise<IOrder[]> => {
     
     const data = await response.json(); 
     return data;
-  }  
-  
-  catch (error) {
+    
+  } catch (error){
     console.error("Error fetching orders:", error);
     throw error; 
   }

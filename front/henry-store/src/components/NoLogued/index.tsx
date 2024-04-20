@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { IOrder } from "@/app/dashboard/types";
-import { Metadata } from "next";
 import styled from "styled-components";
 
 const StyledNotLogContainer = styled.section`

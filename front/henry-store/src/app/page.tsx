@@ -8,12 +8,10 @@ const LazyProductCards = lazy(() => import("@/components/ProductCards"));
 export default function Home() {
   return (
     <div>
-      <NavBar/>
       <Banner/>
       <Suspense fallback={<div><h1>loading...</h1></div>}>
         <LazyProductCards/>
       </Suspense>
-      <Footer/>
     </div> 
   );
 } 

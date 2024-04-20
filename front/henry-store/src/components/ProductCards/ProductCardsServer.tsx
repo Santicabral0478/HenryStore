@@ -8,8 +8,6 @@ export const fetchData = async (): Promise<IProduct[]> => {
           'ngrok-skip-browser-warning': 'true'
         }
       });
-
-      console.log(`MY BACK-END URL: ${backurl.apiurl}`);
       
       const data = await response.json();
       return data;

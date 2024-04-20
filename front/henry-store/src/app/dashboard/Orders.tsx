@@ -1,27 +1,39 @@
 "use client";
-import { Metadata } from 'next';
+import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
-import { getOrders } from './OrderService'
-import { IOrder } from './types';
+
 import Order from '@/components/Order'; 
-import NavBar from '@/components/NavBar';
-import { Footer } from '@/components/Footer';
 import NoLogued from '@/components/NoLogued';
+
+import { IOrder } from './types';
+
+import { getOrders } from './OrderService';
 import { useAuth } from '@/context/authContext';
 
-export const metadata: Metadata = {
-  title: "Shopping Cart",
-  description: "Shopping Cart of user...",
-  robots: {
-    index: false,
-    follow: true,
-  },
+// Metadatos
+type Metadata = {
+  title: string;
+  description: string;
 };
 
-export const Orders = () => {
+export const metadata: Metadata = {
+  title: "Dashboard",
+  description: "description - Dashboard",
+};
+
+// ---
+
+const Orders = () => {
+
+  //Traer de el context el token del usuario 
   const auth = useAuth(); 
-  const token = auth ? auth.token : null; 
-  const [orders, setOrders] = useState<IOrder[]>([]); 
+  const token = auth ? auth.token : null;
+
+  
+// ---
+
+  const [orders, setOrders] = useState<IOrder[]>([]);
+
   const [isLoading, setIsLoading] = useState<boolean>(true);
   
   useEffect(() => {
@@ -35,11 +47,15 @@ export const Orders = () => {
     fetchOrders();
   }, [token]);
 
-
   return (
     <div className="">
-      <NavBar/>
-      {!isLoading && !token && <NoLogued/>}
+      {/* metadatos */}
+      <Head>
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+      </Head>
+
+      {isLoading == false && token == null && <NoLogued/>}
       {isLoading ? 
         <div className="flex h-[40rem] w-full items-center justify-center">
           <div className="flex-col gap-4 w-full flex items-center justify-center">
@@ -48,7 +64,6 @@ export const Orders = () => {
           </div>
         </div>
         : (token && <Order orders={orders}/>)}
-      <Footer/>
     </div>
   );
 };

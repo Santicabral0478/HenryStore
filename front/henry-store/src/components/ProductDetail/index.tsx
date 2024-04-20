@@ -21,7 +21,7 @@ export const ProductDetail: React.FunctionComponent<IProduct> = ({ ...product })
     };
     
     const brokenImageSrc = imagesRep[product.name];
-    
+
     const auth = useAuth();
     const token = auth ? auth.token : null;
 
@@ -66,11 +66,11 @@ export const ProductDetail: React.FunctionComponent<IProduct> = ({ ...product })
                     </div>
             <div className="flex flex-col md:flex-row -mx-4">
                 <div className="md:flex-1 px-4">
-                    <div className="h-[460px] border-gray-400 rounded-3xl bg-white mb-4">
+                    <div className="h-[460px] border-gray-400 rounded-3xl bg-white mb-4 ">
                         {isImageBroken(product.image) ? (
-                          <img className="w-full h-full object-cover border-opacity-70 border-gray-400 rounded-3xl" src={brokenImageSrc} alt={product.name} />
+                          <img className="w-full h-full object-cover rounded-3xl p-4" src={brokenImageSrc} alt={product.name} />
                         ) : (
-                          <img className="w-full h-full object-cover border-opacity-70 border-gray-400 rounded-3xl"  src={product.image} alt={product.name} />
+                          <img className="w-full h-full object-cover rounded-3xl p-4"  src={product.image} alt={product.name} />
                         )}
                     </div>
                 </div>
@@ -93,7 +93,7 @@ export const ProductDetail: React.FunctionComponent<IProduct> = ({ ...product })
                     <div className="mb-4">
                         <span className="font-bold text-gray-700">Select Color:</span>
                         <div className="flex items-center mt-2">
-                            <button className="w-6 h-6 rounded-full bg-gray-800"></button>
+                            <button className="w-6 h-6 rounded-full bg-gray-800 dark:bg-gray-700 mr-2"></button>
                             <button className="w-6 h-6 rounded-full bg-red-500 dark:bg-red-700 mr-2"></button>
                             <button className="w-6 h-6 rounded-full bg-blue-500 dark:bg-blue-700 mr-2"></button>
                             <button className="w-6 h-6 rounded-full bg-yellow-500 dark:bg-yellow-700 mr-2"></button>

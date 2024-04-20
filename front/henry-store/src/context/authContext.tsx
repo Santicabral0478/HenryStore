@@ -3,17 +3,11 @@ import { createContext, useContext, useState, ReactNode, useEffect } from 'react
 
 interface AuthContextType {
     token: string | null;
-    login: (newToken: string) => void;
-    logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
-
-
-
-
-// Creamos el proveedor de autenticación que envolverá nuestra aplicación
+// proveedor de autenticación que envolverá a la aplicación
 export function AuthProvider({ children }: { children: ReactNode }) {
     const [token, setToken] = useState<string | null>(null);
 
@@ -25,21 +19,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         }
     }, []);
 
-    // Función para iniciar sesión y almacenar el token
-    const login = (newToken: string) => {
-        localStorage.setItem('userToken', newToken);
-        setToken(newToken);
-    };
-
-    // Función para cerrar sesión y eliminar el token
-    const logout = () => {
-        localStorage.removeItem('userToken');
-        setToken(null);
-    };
-
     return (
-        <AuthContext.Provider value={{ token, login, logout }}>
-            {children}
+        <AuthContext.Provider value={{ token }}>
+            {children} 
         </AuthContext.Provider>
     );
 }
@@ -48,5 +30,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 export function useAuth(): AuthContextType | null {
     return useContext(AuthContext);
 }
+
+//Forma de uso:::----
+
+//  1)... import { useAuth } from '@/context/authContext';
+
+//  2) ...Traer de el context el token del usuario 
+//        const auth = useAuth(); 
+//        const token = auth ? auth.token : null;
+
 
 

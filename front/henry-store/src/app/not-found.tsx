@@ -1,7 +1,5 @@
 "use client"
 import type { Metadata } from "next";
-import { Footer } from "@/components/Footer";
-import { NavBar } from "@/components/NavBar";
 import styled from "styled-components";
 import Head from "next/head";
 
@@ -64,12 +62,6 @@ const StyledNotLogContainer = styled.section`
 export default function PageNotFound(){
     return(
         <div className="">
-            <Head>
-                <title>Error: 404</title>
-                <meta name="description" content="Sorry, We couldn't find the page you are looking for 🙁" />
-            </Head>
-            
-            <NavBar/>
             <StyledNotLogContainer className="">
                 <div className="nolog-container-items">
                     <div className="nolog-img-text">
@@ -79,7 +71,6 @@ export default function PageNotFound(){
                     </div>
                 </div>
             </StyledNotLogContainer>
-            <Footer/>
         </div>
     );
 }

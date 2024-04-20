@@ -2,32 +2,12 @@
 import { useState, useEffect } from 'react';
 import { IProduct } from "@/components/Card/types";
 import { ProductDetail } from '@/components/ProductDetail';
-import { NavBar } from '@/components/NavBar';
-import { Footer } from '@/components/Footer';
-import { backurl } from '@/app/BACK_URL';
 import { Params } from './types';
+import { getProduct } from './getProduct';
 import Head from 'next/head';
 
-const getProduct = async (id: string) => {
-    try {
-        const response = await fetch(`${backurl.apiurl}/products`, {
-            headers: {
-                'ngrok-skip-browser-warning': 'true'
-            }
-        });
-        const data = await response.json();
-
-        // Buscar el producto por ID
-        const item = data.find((item: IProduct) => item.id.toString() === id);
-        console.log(item);
-        return item; 
-    } catch (error) {
-        console.error("Error fetching character:", error);
-        return null;
-    }
-};
-
 export const IdProducts = ({ params }: { params: Params }) => {
+    
     const [product, setProduct] = useState<IProduct | null>(null);
     const [redirect, setRedirect] = useState<boolean>(false);
 
@@ -59,9 +39,7 @@ export const IdProducts = ({ params }: { params: Params }) => {
                         <title>{product.name}</title>
                         <meta name="description" content={product.description} />
                     </Head>
-                    <NavBar/>
                     <ProductDetail {...product}/>
-                    <Footer/>
                 </div>
             ) : (
                 <div className="flex h-[40rem] w-full items-center justify-center">
