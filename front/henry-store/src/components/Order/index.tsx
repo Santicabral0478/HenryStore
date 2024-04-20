@@ -250,17 +250,17 @@ export const Order: React.FunctionComponent<OrderProps> = ({ orders }) => {
                     <p>PAY METHODS</p>
                     <div className="card-pay-container">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="bank site" style={{width: "2.2rem", height: "1.2rem"}}/>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQC4gLCtNHrcbZmQIdqUbXIIC_GBqKw0K-ozfso4B2W3g&s" alt="bank site" style={{width: "2.4rem", height: "1.2rem"}}/>
-                        <img src="https://cdn.icon-icons.com/icons2/1178/PNG/512/amex_82052.png" alt="bank site" style={{width: "2.3rem", height: "1.2rem"}}/>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQC4gLCtNHrcbZmQIdqUbXIIC_GBqKw0K-ozfso4B2W3g&s" alt="bank site" style={{width: "2.4rem", height: "1.6rem"}}/>
+                        <img src="https://cdn.icon-icons.com/icons2/1178/PNG/512/amex_82052.png" alt="bank site" style={{width: "2.3rem", height: "1.6rem"}}/>
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-PEVVUDdOhG3dJARu5lY6OCU3RD_sc6oLGY2Vjhkikw&s" alt="bank site" style={{width: "2.7rem", height: "1.2rem"}}/>
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Google_Pay_Logo.svg/2560px-Google_Pay_Logo.svg.png" alt="bank site" style={{width: "3rem", height: "1.2rem"}}/>
                     </div>
                     <div className="card-pay-container">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7dk4DoHSu0nstJxQC1nNXCVN2IQBoPjA_VrMSzvRlFA&s" alt="bank site" style={{width: "3rem", height: "1.2rem"}}/>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7mYw0o2EsMCikpUgHNH1ezQBbe4g50fiGsh1kCvMhmA&s" alt="bank site" style={{width: "2.8rem", height: "1.2rem"}}/>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi7XuJbH2WoEesJBOPTUWpol6bd8iCIOn5Fa7h_tQ28Q&s" alt="bank site" style={{width: "3rem", height: "1.2rem"}}/>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7dk4DoHSu0nstJxQC1nNXCVN2IQBoPjA_VrMSzvRlFA&s" alt="bank site" style={{width: "3rem", height: "1.6rem"}}/>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7mYw0o2EsMCikpUgHNH1ezQBbe4g50fiGsh1kCvMhmA&s" alt="bank site" style={{width: "2.8rem", height: "1.6rem"}}/>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi7XuJbH2WoEesJBOPTUWpol6bd8iCIOn5Fa7h_tQ28Q&s" alt="bank site" style={{width: "3rem", height: "1.6rem"}}/>
                         <img src="https://iconape.com/wp-content/files/iz/301156/svg/301156.svg" alt="bank site" style={{width: "3rem"}}/>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-w_jQYtPQfxI5iWwNqwZp9M3nL7mvIDlCGzJoCAm4mQ&s" alt="bank site" style={{width: "2.3rem", height: "1.2rem"}}/>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-w_jQYtPQfxI5iWwNqwZp9M3nL7mvIDlCGzJoCAm4mQ&s" alt="bank site" style={{width: "2.6rem", height: "1.2rem"}}/>
                     </div>
                 </div>
                 <div className="protected-purchase-text">

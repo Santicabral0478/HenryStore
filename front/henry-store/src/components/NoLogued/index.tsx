@@ -57,7 +57,7 @@ export const NoLogued: React.FunctionComponent= () => {
     <StyledNotLogContainer className="">
         <div className="nolog-container-items">
             <div className="nolog-img-text">
-                <img src="https://img.pikbest.com/element_our/20230707/bg/3ee7b9fe26118.png!sw800" alt="cart" />
+                <img src="https://img.pikbest.com/element_our/20230707/bg/3ee7b9fe26118.png!sw800" alt="cart noLogued" />
                 <h2><b>No purchases</b></h2>
                 <p>¡Log-in and start shopping!</p>
             </div>

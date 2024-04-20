@@ -11,7 +11,7 @@ export const AuthForm: React.FC<AuthFormProps>  = ({ token, setToken }) => {
   });
 
   const inputHandler = (event: React.ChangeEvent<HTMLInputElement>): void =>{
-    const name = event.target.name;
+    const name = event.target.name; 
     const value = event.target.value;
 
     const updateUserData= {
@@ -60,7 +60,7 @@ export const AuthForm: React.FC<AuthFormProps>  = ({ token, setToken }) => {
 
       if (!response.ok) {
         throw new Error("Failed to log in");
-      }
+      } 
 
       const json = await response.json();
       setToken(json.token);
