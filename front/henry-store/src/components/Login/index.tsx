@@ -4,11 +4,13 @@ import { backurl } from "@/app/BACK_URL";
 import { IUserData, AuthFormProps } from "./types";
 
 export const AuthForm: React.FC<AuthFormProps>  = ({ token, setToken }) => {
-
+  
   const [userData, setUserData] = useState<IUserData>({
     email: "",
     password: "",
   });
+
+  const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
 
   const inputHandler = (event: React.ChangeEvent<HTMLInputElement>): void =>{
     const name = event.target.name; 
@@ -17,13 +19,14 @@ export const AuthForm: React.FC<AuthFormProps>  = ({ token, setToken }) => {
     const updateUserData= {
       ...userData, [name]: value
     }
+
+    setErrors({});
     
     setUserData(updateUserData);
   }
   
   // validacion de datos
 
-  const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
 
   const validateInput = (inputName: string ,inputValue: string) =>{
     switch (inputName) {
@@ -63,7 +66,7 @@ export const AuthForm: React.FC<AuthFormProps>  = ({ token, setToken }) => {
       } 
 
       const json = await response.json();
-      setToken(json.token);
+      setToken(json.token); 
       localStorage.setItem("userToken", json.token);
 
       window.location.href = '/';

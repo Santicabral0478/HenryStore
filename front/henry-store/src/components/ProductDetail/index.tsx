@@ -1,5 +1,5 @@
 import { IProduct } from "../Card/types";
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React from "react";
 import { useAuth } from '@/context/authContext';
 import "./style.css"
 import { backurl } from "@/app/BACK_URL";
@@ -44,14 +44,15 @@ export const ProductDetail: React.FunctionComponent<IProduct> = ({ ...product })
                 headers: headers, 
                 body: JSON.stringify({ products: [product.id] })
             });
-            alert("Added product");
+            alert("Successful Purchase ✅");
             window.location.href = '/dashboard';
             
             if (!response.ok) {
-                throw new Error("Failed to add to cart");
+                throw new Error("Failed to Buy ❌");
             }
     
         } catch (error) {
+            alert("Failed to Buy ❌");
             console.error("Error:", error);
         }
     };
@@ -109,10 +110,10 @@ export const ProductDetail: React.FunctionComponent<IProduct> = ({ ...product })
 
                     <div className="flex -mx-2 mb-4 mt-4">
                         <div className="w-1/2 px-2">
-                            <button className="w-full bg-gray-900 dark:bg-gray-600 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800 dark:hover:bg-gray-700">Buy</button>
+                            <button className="w-full bg-gray-900 dark:bg-gray-600 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800 dark:hover:bg-gray-700">Add to cart</button>
                         </div>
                         <div className="w-1/2 px-2">
-                            <button onClick={submitHandler} className="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white py-2 px-4 rounded-full font-bold hover:bg-gray-300 dark:hover:bg-gray-600">Add to cart</button>
+                            <button onClick={submitHandler} className="w-full bg-gray-200 dark:bg-green-700 text-gray-800 dark:text-white py-2 px-4 rounded-full font-bold hover:bg-yellow-300 dark:hover:bg-gray-600">Buy Now!</button>
                         </div> 
                     </div>
                 </div>

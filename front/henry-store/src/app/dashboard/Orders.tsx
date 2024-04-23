@@ -7,7 +7,7 @@ import NoLogued from '@/components/NoLogued';
 
 import { IOrder } from './types';
 
-import { getOrders } from './OrderService';
+import { getOrders } from './OrderService'; 
 import { useAuth } from '@/context/authContext';
 
 // Metadatos
@@ -28,12 +28,8 @@ const Orders = () => {
   //Traer de el context el token del usuario 
   const auth = useAuth(); 
   const token = auth ? auth.token : null;
-
-  
 // ---
-
   const [orders, setOrders] = useState<IOrder[]>([]);
-
   const [isLoading, setIsLoading] = useState<boolean>(true);
   
   useEffect(() => {

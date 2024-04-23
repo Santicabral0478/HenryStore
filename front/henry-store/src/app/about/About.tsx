@@ -1,16 +1,9 @@
-"use client";
-import { Footer } from "@/components/Footer";
-import NavBar from "@/components/NavBar";
 import "./style.css"
-import Head from "next/head";
 export const About = ()=>{
 
 
     return(
         <div className="">
-            <Head>
-                <title> About </title>
-            </Head>
             <div className="">
                 <div className="left-container">
                     <div className="text-container">

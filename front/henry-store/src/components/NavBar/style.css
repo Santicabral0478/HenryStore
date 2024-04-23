@@ -97,8 +97,9 @@
 
 .hm-menu .icon-cart button img{
   filter: invert(100%);
+  width: 18px;
   height: 23px;
-}
+} 
 
 .hm-menu .icon-cart button span{
   color: #fff;
@@ -165,14 +166,15 @@
     margin-inline: auto;
   }
 
-    /*hover effect*/
+  button{
+    transition: all .1s ease-in-out;
+  }
+
   button:hover {
     color: #0b0b0b;
-    background-color: #d0d0d0;
-    box-shadow: rgba(0, 0, 0, 0.5) 0 10px 20px;
+    box-shadow: rgba(0, 0, 0, 0.298) 0 10px 20px;
     transform: translateY(-3px);
   }
-  /*button pressing effect*/
   button:active {
     box-shadow: none;
     transform: translateY(0);

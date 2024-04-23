@@ -113,10 +113,10 @@ export const NavBar = () => {
                     <button>
                       <Image 
                         src="/cart.png" 
-                        width={27} 
+                        width={20} 
                         height={13} 
                         alt="Shopping Cart"
-                        style={{filter: "invert(100%)", marginInline: "auto", width: "2rem", height: "2rem"}} 
+                        style={{filter: "invert(100%)", marginInline: "auto", width: "23px", height: "23px"}} 
                       />
                       <span><b>{totalProducts}</b></span>
                     </button>

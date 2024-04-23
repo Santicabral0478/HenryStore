@@ -80,6 +80,11 @@ const StyledContCard = styled.div`
         border-radius: 7px;
         color: #070707;
     }
+
+    .info-product-card-cont i{
+        display: block;
+        font-size: 10px;
+    }
 `;
 
 const StyledPayContent = styled.div`
@@ -179,8 +184,6 @@ export const Order: React.FunctionComponent<OrderProps> = ({ orders }) => {
         }, 0);
     };
 
-    
-    
     const totalPrice = getTotalPrice(orders);
     const totalProducts = getTotalProducts(orders);
 
@@ -226,6 +229,7 @@ export const Order: React.FunctionComponent<OrderProps> = ({ orders }) => {
                                         <div className="info-product-card-cont">
                                             <h3><b>{product.name}</b></h3>
                                             <p>us$ {product.price}</p>
+                                            <i>{order.date.toString()}</i>
                                             <Link href={`/products/${product.id}`}>
                                               <button className="button-details" >
                                                 more details
@@ -244,7 +248,10 @@ export const Order: React.FunctionComponent<OrderProps> = ({ orders }) => {
             <div className="total-price-and-pay">
                 <div className="total-price-h3-cont">
                     <h3 className="total-price-h3"><b>Total:  <i>us$ {totalPrice}</i></b></h3>
-                    <button><b>Pay</b></button>
+                    <button style={{display: "flex", gap: "1rem", justifyContent:"space-evenly", alignItems: "center"}}>
+                        <b>Download Tiket</b>
+                        <img src="/document.png" alt="Shopping Cart" style={{filter: "invert(100%)", marginInline: "auto", width: "23px", height: "23px"}}/>    
+                    </button>
                 </div>
                 <div className="pay-card-methods">
                     <p>PAY METHODS</p>
@@ -256,11 +263,11 @@ export const Order: React.FunctionComponent<OrderProps> = ({ orders }) => {
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Google_Pay_Logo.svg/2560px-Google_Pay_Logo.svg.png" alt="bank site" style={{width: "3rem", height: "1.2rem"}}/>
                     </div>
                     <div className="card-pay-container">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7dk4DoHSu0nstJxQC1nNXCVN2IQBoPjA_VrMSzvRlFA&s" alt="bank site" style={{width: "3rem", height: "1.6rem"}}/>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7dk4DoHSu0nstJxQC1nNXCVN2IQBoPjA_VrMSzvRlFA&s" alt="bank site" style={{width: "3rem", height: "1.5rem"}}/>
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7mYw0o2EsMCikpUgHNH1ezQBbe4g50fiGsh1kCvMhmA&s" alt="bank site" style={{width: "2.8rem", height: "1.6rem"}}/>
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi7XuJbH2WoEesJBOPTUWpol6bd8iCIOn5Fa7h_tQ28Q&s" alt="bank site" style={{width: "3rem", height: "1.6rem"}}/>
                         <img src="https://iconape.com/wp-content/files/iz/301156/svg/301156.svg" alt="bank site" style={{width: "3rem"}}/>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-w_jQYtPQfxI5iWwNqwZp9M3nL7mvIDlCGzJoCAm4mQ&s" alt="bank site" style={{width: "2.6rem", height: "1.2rem"}}/>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-w_jQYtPQfxI5iWwNqwZp9M3nL7mvIDlCGzJoCAm4mQ&s" alt="bank site" style={{width: "2.9rem", height: "1.1rem"}}/>
                     </div>
                 </div>
                 <div className="protected-purchase-text">
