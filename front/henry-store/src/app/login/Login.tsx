@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import React from 'react';
 
-import { Footer } from "@/components/Footer";
 import { AuthForm } from "@/components/Login";
 
 // ---
@@ -32,7 +31,6 @@ export const Login = () => {
          </div>
          <AuthForm token={token} setToken={setToken} />
       </div>
-      <Footer/>
     </div> 
   );
 };

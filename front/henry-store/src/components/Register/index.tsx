@@ -75,13 +75,7 @@ export const RegisterForm = () => {
     } catch (error) {
       console.error("Error:", error);
     }
-
-    const redirectUrl = localStorage.getItem('redirectUrl');
-    if (redirectUrl) {
-      window.location.href = redirectUrl;
-    } else {
       window.location.href = `/login`;
-    }
   };
 
   return (

@@ -8,9 +8,10 @@ import NoLogued from '@/components/NoLogued';
 import { IOrder } from './types';
 
 import { getOrders } from './OrderService'; 
+
+//IMPORTACION DEL CONTEXTO; 
 import { useAuth } from '@/context/authContext';
 
-// Metadatos
 type Metadata = {
   title: string;
   description: string;
@@ -25,9 +26,11 @@ export const metadata: Metadata = {
 
 const Orders = () => {
 
-  //Traer de el context el token del usuario 
+  //Traer del context el token del usuario 
   const auth = useAuth(); 
   const token = auth ? auth.token : null;
+
+  
 // ---
   const [orders, setOrders] = useState<IOrder[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);

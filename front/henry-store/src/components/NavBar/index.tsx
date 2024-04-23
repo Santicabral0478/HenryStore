@@ -36,7 +36,8 @@ export const NavBar = () => {
   }, [token]);
 
   const handleLogout = ():void => {
-    const logOut = window.confirm("Are you sure you want to log out?")
+    const logOut = window.confirm("Are you sure you want to log out?");
+    
     if(logOut){
       localStorage.removeItem("userToken");
       setToken(null);

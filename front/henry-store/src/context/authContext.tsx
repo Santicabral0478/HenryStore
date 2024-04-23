@@ -22,6 +22,7 @@ export function AuthProvider({ children } : { children: ReactNode }) {
 
     return (
 
+    
 //3)::...Envolvemos al children con en proveedor de autorizacion 
         <AuthContext.Provider value={{ token }}>
             {children} 
@@ -34,7 +35,7 @@ export function useAuth(): AuthContextType | null {
     return useContext(AuthContext);
 }
 
-//Forma de uso:::----
+//Forma de uso:::---- 
 
 //  1)... import { useAuth } from '@/context/authContext';
 

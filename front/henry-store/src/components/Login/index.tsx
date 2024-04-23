@@ -16,18 +16,14 @@ export const AuthForm: React.FC<AuthFormProps>  = ({ token, setToken }) => {
     const name = event.target.name; 
     const value = event.target.value;
 
-    const updateUserData= {
+    const updateUserData = {
       ...userData, [name]: value
     }
-
     setErrors({});
-    
     setUserData(updateUserData);
   }
   
   // validacion de datos
-
-
   const validateInput = (inputName: string ,inputValue: string) =>{
     switch (inputName) {
       case "email": { return (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inputValue));}
