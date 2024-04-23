@@ -44,7 +44,7 @@ export const AuthForm: React.FC<AuthFormProps>  = ({ token, setToken }) => {
       
     setErrors(newErrors);
 
-    if (Object.keys(errors).length > 0){
+    if (Object.keys(newErrors).length > 0){
       return;
     }  
 

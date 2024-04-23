@@ -5,10 +5,11 @@ interface AuthContextType {
     token: string | null;
 }
 
+//1)::...Creamos un contexto
 const AuthContext = createContext<AuthContextType | null>(null);
 
-// proveedor de autenticación que envolverá a la aplicación
-export function AuthProvider({ children }: { children: ReactNode }) {
+//2)::...Creamos al proveedor de autorizacion
+export function AuthProvider({ children } : { children: ReactNode }) {
     const [token, setToken] = useState<string | null>(null);
 
     // Efecto que corre solo en el cliente para obtener el token desde localStorage
@@ -20,6 +21,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }, []);
 
     return (
+
+//3)::...Envolvemos al children con en proveedor de autorizacion 
         <AuthContext.Provider value={{ token }}>
             {children} 
         </AuthContext.Provider>

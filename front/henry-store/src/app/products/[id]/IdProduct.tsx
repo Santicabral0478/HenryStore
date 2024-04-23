@@ -29,7 +29,7 @@ export const IdProducts = ({ params }: { params: Params }) => {
     if (redirect === true) {
         window.location.href = '/404';
         return null;
-    } 
+    }
 
     return (
         <div>
