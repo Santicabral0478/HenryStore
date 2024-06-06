@@ -18,7 +18,7 @@ export function AuthProvider({ children } : { children: ReactNode }) {
         if (storedToken) {
             setToken(storedToken);
         }
-    }, []);
+    }, []); 
 
     return (
 
@@ -42,6 +42,8 @@ export function useAuth(): AuthContextType | null {
 //  2) ...Traer de el context el token del usuario 
 //        const auth = useAuth(); 
 //        const token = auth ? auth.token : null;
+
+
 
 
 

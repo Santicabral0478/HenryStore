@@ -59,67 +59,188 @@ export const ProductDetail: React.FunctionComponent<IProduct> = ({ ...product })
     
 
     return (
-    <div className=" py-8">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="title-container">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/833px-Apple_logo_black.svg.png" alt="" />
-                        <h1>{product.name}</h1>
-                    </div>
-            <div className="flex flex-col md:flex-row -mx-4">
-                <div className="md:flex-1 px-4">
-                    <div className="h-[460px] border-gray-400 rounded-3xl bg-white mb-4 ">
-                        {isImageBroken(product.image) ? (
-                          <img className="w-full h-full object-cover rounded-3xl p-4" src={brokenImageSrc} alt={product.name} />
-                        ) : (
-                          <img className="w-full h-full object-cover rounded-3xl p-4"  src={product.image} alt={product.name} />
-                        )}
-                    </div>
-                </div>
-                <div className="md:flex-1 px-4"> 
-                    <div className="CountersNumericV4WProgress w-full h-44 mb-5 relative">
-                        <div className="bg-gray-100 w-full h-44 left-0 top-0 absolute border border-opacity-70 border-gray-400 rounded-3xl">
-                            <div className="AmountR top-[110px] absolute text-right text-black text-sm font-bold leading-tight" style={{right: "7%"}}>{product.stock}</div>
-                            <div className="AmountL left-[24px] top-[110px] absolute text-black text-sm font-bold leading-tight">2024</div>
-                            <div className="ElementProgressBarsMedium w-10 h-1 left-[24px] top-[86px] absolute">
-                              <div className="Bg h-1 left-0 top-0 static bg-white bg-opacity-90 rounded-sm" style={{width: "80%"}}></div>
-                              <div className="Progress w-48 h-1 left-0 top-0 absolute bg-amber-300 rounded-sm"></div>
-                            </div>
+        <>
+            <main>
+                <section className="section prodmin" aria-label="prodmin">
+                  <div className="contenedor cont-producto">
 
-                            <div className="SubtitleR top-[133px] absolute text-right text-zinc-500 text-xs font-medium leading-none" style={{right: "7%"}}>Stock</div>
-                            <div className="SubtitleL left-[24px] top-[133px] absolute text-zinc-500 text-xs font-medium leading-none">Total</div>
-                            <div className="Amount left-[24px] top-[41px] absolute text-black text-lg font-extrabold leading-normal">us$ {product.price}</div>
-                            <div className="Title left-[24px] top-[15px] absolute text-zinc-500 text-sm font-normal leading-tight">Total</div>
-                        </div>
-                    </div>
-                    <div className="mb-4">
-                        <span className="font-bold text-gray-700">Select Color:</span>
-                        <div className="flex items-center mt-2">
-                            <button className="w-6 h-6 rounded-full bg-gray-800 dark:bg-gray-700 mr-2"></button>
-                            <button className="w-6 h-6 rounded-full bg-red-500 dark:bg-red-700 mr-2"></button>
-                            <button className="w-6 h-6 rounded-full bg-blue-500 dark:bg-blue-700 mr-2"></button>
-                            <button className="w-6 h-6 rounded-full bg-yellow-500 dark:bg-yellow-700 mr-2"></button>
-                        </div>
-                    </div>
+                    <div className="imagenes-deslizable">
+                      <div className="swiper imagenes-deslizable-cards">
+                          <div className="swiper-wrapper">
+                              <div className="swiper-slide">
+                                  <article className="imagenes-deslizable-articulo">
+                                      <img src="../assets/img/casa-en-renta1.jpg" alt="image imagenes-deslizable" className="imagenes-deslizable__img"/>
 
-                    <div>
-                        <span className="font-bold text-gray-700">Product Description:</span>
-                        <p className="text-gray-600 text-sm mt-2">
-                            {product.description}
-                        </p>
-                    </div>
+                                  </article>
+                              </div>
 
-                    <div className="flex -mx-2 mb-4 mt-4">
-                        <div className="w-1/2 px-2">
-                            <button className="w-full bg-gray-900 dark:bg-gray-600 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800 dark:hover:bg-gray-700">Add to cart</button>
+                              <div className="swiper-slide">
+                                  <article className="imagenes-deslizable-articulo">
+                                      <img src="../assets/img/casa-en-renta1-a.jpg" alt="image imagenes-deslizable" className="imagenes-deslizable__img"/>
+
+                                  </article>
+                              </div>
+
+                              <div className="swiper-slide">
+                                  <article className="imagenes-deslizable-articulo">
+                                      <img src="../assets/img/casa-en-renta1-b.jpg" alt="image imagenes-deslizable" className="imagenes-deslizable__img"/>
+
+                                  </article>
+                              </div>
+
+                              <div className="swiper-slide">
+                                  <article className="imagenes-deslizable-articulo">
+                                      <img src="../assets/img/casa-en-renta1-c.jpg" alt="image imagenes-deslizable" className="imagenes-deslizable__img"/>
+
+                                  </article>
+                              </div>
+                          </div>
+                      </div>
+
+                      {/* =============== swiper IMAGENES-DESLIZABLE THUMBNAIL ===============  */}
+                      <div className="imagenes-deslizable__overflow">
+                        <div className="background-gradient-imagenes-deslizable"></div>
+                          <div className="swiper imagenes-deslizable-thumbs">
+                              <div className="swiper-wrapper">
+                                  <div className="swiper-slide">
+                                      <div className="imagenes-deslizable__thumbnail">
+                                          <img src="../assets/img/casa-en-renta1.jpg" alt="image thumbnail" className="imagenes-deslizable__thumbnail-img"/>
+                                      </div>
+                                  </div>
+
+                                  <div className="swiper-slide">
+                                      <div className="imagenes-deslizable__thumbnail">
+                                          <img src="../assets/img/casa-en-renta1-a.jpg" alt="image thumbnail" className="imagenes-deslizable__thumbnail-img"/>
+                                      </div>
+                                  </div>
+
+                                  <div className="swiper-slide">
+                                      <div className="imagenes-deslizable__thumbnail">
+                                          <img src="../assets/img/casa-en-renta1-b.jpg" alt="image thumbnail" className="imagenes-deslizable__thumbnail-img"/>
+                                      </div>
+                                  </div>
+
+                                  <div className="swiper-slide">
+                                      <div className="imagenes-deslizable__thumbnail">
+                                          <img src="../assets/img/casa-en-renta1-c.jpg" alt="image thumbnail" className="imagenes-deslizable__thumbnail-img"/>
+                                      </div>
+                                  </div>
+
+
+                              </div>
+
+
+                          </div>
+
+                          {/* swiper arrows */}
+                          <div className="swiper-button-next">
+                              <i className="ri-arrow-right-line"></i>
+                          </div>
+                          <div className="swiper-button-prev">
+                              <i className="ri-arrow-left-line"></i>
+                          </div>
+                      </div>
+                  </div>
+
+                      <div className="prodmin-content">
+                        <h2 className="h2 section-title">5301 La Plata</h2>
+
+                        <div className="grid-info-producto">
+                          <div className="tipo-pago"><p className="prodmin-text">Alquiler</p></div>
+                          <div className="tipo-precio"><p className="prodmin-text"><span className="spangreen"> Consultar</span></p></div>
+                          <div className="tipo-propiedad"><p className="prodmin-text"><b>Propiedad</b></p></div>
+                          <div className="tipo-ubicacion"><p className="prodmin-text"><b>Ubicación</b></p></div>
+                          <div className="tipo-propiedad-res"><p className="prodmin-text">Casa</p></div>
+                          <div className="tipo-ubicacion-res"><p className="prodmin-text">Barrio Norte</p></div>
+                          <div className="tipo-dormitorios"><p className="prodmin-text"><b>Dormitorios</b></p></div>
+                          <div className="tipo-antiguedad"><p className="prodmin-text"><b>Antiguedaad</b></p></div>
+                          <div className="tipo-dormitorios-res"><p className="prodmin-text">4</p></div>
+                          <div className="tipo-antiguedad-res"><p className="prodmin-text">1 Año</p></div>
                         </div>
-                        <div className="w-1/2 px-2">
-                            <button onClick={submitHandler} className="w-full bg-gray-200 dark:bg-green-700 text-gray-800 dark:text-white py-2 px-4 rounded-full font-bold hover:bg-yellow-300 dark:hover:bg-gray-600">Buy Now!</button>
-                        </div> 
+
+                      </div>
+                  </div>
+                </section>
+
+                <section className="inmueble-caract">
+                    <div className="contenedor">
+                      <div className="cont-general-caract">
+                        <div className="caract-inf-basica">
+                          <h3 className="caract-title">información Básica</h3>
+                        </div>
+
+                        <div className="cont-general-caract-checks"> 
+                          <p className="caract-checks">
+                            <i className="fa-solid fa-check"></i> Baños: 1<br/>
+                            <i className="fa-solid fa-check"></i> Toilettes: 1<br/>
+                            <i className="fa-solid fa-check"></i> Condición: Nuevo<br/>
+                          </p>
+                        </div>
+
+                        <div className="cont-general-caract-checks2">
+                          <p className="caract-checks">
+                            <i className="fa-solid fa-check"></i> Cocina: 1 <br/>
+                            <i className="fa-solid fa-check"></i> Dormitorios: 4<br/>
+                            <i className="fa-solid fa-check"></i> Balcón <br/>
+                            <i className="fa-solid fa-check"></i> Estacionamiento <br/>
+                          </p>
+                        </div>
+
+                        <div className="cont-general-caract-sup">
+                          <h3 className="caract-title">Superficies y medidas</h3>
+                        </div>
+
+                        <div className="cont-general-caract-sup-checks">
+                                          <p className="caract-checks">
+                            <i className="fa-solid fa-ruler-combined"></i> Superficie Total: 300 m²<br/>
+                          </p>
+                        </div>
+
+                        <div className="cont-general-caract-desc"> 
+                          <h3 className="caract-title">Descripción</h3>
+                        </div>
+
+                        <div className="cont-general-caract-desc-cont">
+                          <p className="caract-descripcion">
+                            🌆 Ubicación Inmejorable: Este departamento se encuentra en el corazón pulsante de la ciudad, rodeado de una vibrante vida urbana. Disfrutarás de un fácil acceso a restaurantes de renombre, tiendas exclusivas, parques serenos y emocionantes lugares de entretenimiento.
+                            <br/>
+                            🏞️ Vistas Impresionantes: Desde las ventanas de tu nuevo hogar, podrás admirar impresionantes vistas panorámicas de la ciudad. Ya sea de día o de noche, estas vistas te dejarán sin aliento y te conectarán con el latido de la metrópolis.
+                            <br/>
+                            🏡 Diseño Funcional y Moderno: El departamento cuenta con un diseño inteligente que maximiza el uso del espacio. La distribución fluida conecta las áreas de estar y ofrece un ambiente cálido y acogedor. Los acabados de alta calidad y los detalles elegantes brindan un toque contemporáneo a cada rincón.
+                            <br/>
+                            🍳 Cocina Totalmente Equipada: La cocina de diseño moderno está equipada con electrodomésticos de primera línea y ofrece amplias encimeras para preparar tus comidas favoritas. Ya sea un chef experimentado o un aficionado, te encantará crear deliciosos platos aquí.
+                          </p>
+                        </div>
+
+                        <div className="cont-general-caract-serv">
+                          <p className="caract-checks">
+                            <h3 className="caract-title">Servicios</h3>
+                          </p>
+                        </div>
+
+                        <div className="cont-general-caract-serv-checks">
+                          <p className="caract-checks">
+                            <i className="fa-solid fa-bolt"></i> Electricidad <br/>
+                            <i className="fa-solid fa-faucet-drip"></i> Agua Potable<br/>
+                            <i className="fa-solid fa-fire-flame-simple"></i> Gas Natural <br/>
+                            <i className="fa-solid fa-toilet"></i> Cloaca <br/>
+                          </p>
+                        </div>
+
+                      </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                </section>
+
+                <section className="mapa-direccion">
+                  <div className="contenedor">
+                    <h2 className="mapa-titulo">Ubicación</h2>
+                    <div className="google-maps-link">
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3281.2606598425305!2d-58.353735624866346!3d-34.673370261178974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a3331dcd68fd89%3A0x92dfdde0df93960a!2sAv.%20Bartolom%C3%A9%20Mitre%2C%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1691671696243!5m2!1ses!2sar" ></iframe>
+                    </div>
+                  </div>
+                </section>
+            </main>
+        </>
 
     );
   };
